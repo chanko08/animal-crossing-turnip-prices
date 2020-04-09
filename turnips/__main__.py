@@ -11,10 +11,11 @@ def prediction_to_str(week, prediction, prediction_type, base_price):
 
 
 def prices(s):
-    values = [int(v) for v in s.split(",")]
+    values = [int(v.strip()) for v in s.split(",")]
 
     week = {}
     for i,v in enumerate(values):
+        if v < 1: continue
         week[i] = v
     
     return week
@@ -23,8 +24,8 @@ def prices(s):
 def main():
     argp = argparse.ArgumentParser()
 
-    argp.add_argument("-buy-price", type=int, required=True)
-    argp.add_argument("-sell-prices", type=prices, required=True)
+    argp.add_argument("-buy-price", type=int, required=True, help="The price turnips was bought at on Sunday")
+    argp.add_argument("-sell-prices", type=prices, required=True, help="Comma-seperated list of the values observed in the week starting on Monday. Use zero to delimit unknown values between known values.")
     args = argp.parse_args()
 
     matches = turnips.find_pattern_matches(args.sell_prices, args.buy_price)
