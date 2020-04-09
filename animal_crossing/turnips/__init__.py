@@ -1,4 +1,4 @@
-from turnips import patterns
+from animal_crossing.turnips import patterns
 
 
 def find_pattern_matches(week, buy_price):
