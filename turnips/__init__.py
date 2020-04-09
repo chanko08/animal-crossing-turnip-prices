@@ -1,26 +1,13 @@
 from turnips import patterns
 
 
-def prediction_to_str(week, prediction, prediction_type, base_price):
-    values = []
-    for i, r in enumerate(prediction):
-        v = f"{r[0]}..{r[1]}"
-        values.append(v)
-    
-    return f"{prediction_type} | {base_price} | " + " | ".join(values)
-
 def find_pattern_matches(week, buy_price):
 
-    base_prices = range(90, 111)
-    base_prices = [buy_price]
-    
+    all_matches = {}
     for pattern_type, pattern in patterns.all_patterns.items():
         matches = find_matches(week, pattern, buy_price)
-
-        if matches:
-            for m in matches:
-                print(prediction_to_str(week, m, pattern_type, buy_price))
-                input()    
+        all_matches[pattern_type] = matches
+    return all_matches
     
     
 def find_matches(week, pattern, base_price):
