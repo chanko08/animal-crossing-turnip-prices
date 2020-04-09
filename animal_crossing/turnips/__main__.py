@@ -1,5 +1,5 @@
 import argparse
-import turnips
+import animal_crossing.turnips as turnips
 
 def prediction_to_str(week, prediction, prediction_type, base_price):
     values = []
@@ -22,7 +22,7 @@ def prices(s):
 
 
 def main():
-    argp = argparse.ArgumentParser()
+    argp = argparse.ArgumentParser(prog="turnips")
 
     argp.add_argument("-buy-price", type=int, required=True, help="The price turnips was bought at on Sunday")
     argp.add_argument("-sell-prices", type=prices, required=True, help="Comma-seperated list of the values observed in the week starting on Monday. Use zero to delimit unknown values between known values.")

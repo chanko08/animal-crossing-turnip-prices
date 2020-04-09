@@ -1,7 +1,7 @@
-from turnips.patterns import decrease
-from turnips.patterns import decrease_spike_decrease
-from turnips.patterns import decrease_spike_low
-from turnips.patterns import high_low
+from animal_crossing.turnips.patterns import decrease
+from animal_crossing.turnips.patterns import decrease_spike_decrease
+from animal_crossing.turnips.patterns import decrease_spike_low
+from animal_crossing.turnips.patterns import high_low
 
 
 all_patterns = {
