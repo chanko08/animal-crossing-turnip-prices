@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="animal-crossing-turnip-prices-chanko08",
-    version="0.0.1",
+    version="0.0.2",
     author="Alex Bechanko",
     author_email="chanko08@gmail.com",
     description="Animal Crossing New Horizons turnip price predictor",
