@@ -1,5 +1,5 @@
 import itertools
-from animal_crossing.turnips.patterns.prices import prices
+from animal_crossing.turnips.price import prices
 
 def rates_decreasing(num_price_periods):
     assert num_price_periods > 0

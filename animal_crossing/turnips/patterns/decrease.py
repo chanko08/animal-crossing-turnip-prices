@@ -1,4 +1,4 @@
-from animal_crossing.turnips.patterns.prices import prices
+from animal_crossing.turnips.price import prices
 
 def rates_decreasing():
     rate_range = (0.9 - 0.05 ,0.9)
