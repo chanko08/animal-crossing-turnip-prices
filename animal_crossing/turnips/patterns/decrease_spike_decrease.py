@@ -1,5 +1,5 @@
 import itertools
-from animal_crossing.turnips.patterns.prices import prices
+from animal_crossing.turnips.price import prices, PriceRange
 
 def rates_decreasing(num_price_periods):
     if num_price_periods <= 0: return
@@ -30,8 +30,8 @@ def pattern(base_price):
         
 
         phase_spike = list(prices(base_price, rates_spike()))
-        phase_spike[2] = (phase_spike[2][0] - 1, phase_spike[2][1] - 1)
-        phase_spike[4] = (phase_spike[4][0] - 1, phase_spike[4][1] - 1)
+        phase_spike[2] = PriceRange(phase_spike[2].low - 1, phase_spike[2].high - 1)
+        phase_spike[4] = PriceRange(phase_spike[4].low - 1, phase_spike[4].high - 1)
 
         phase_decreasing2 = prices(base_price, rates_decreasing(phase[1]))
 

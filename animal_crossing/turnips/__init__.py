@@ -1,21 +1,11 @@
 from animal_crossing.turnips import patterns
 
+from animal_crossing.turnips.prediction import Prediction
+from animal_crossing.turnips.price import PriceRange
 
-def find_pattern_matches(week, buy_price):
-
-    all_matches = {}
-    for pattern_type, pattern in patterns.all_patterns.items():
-        matches = find_matches(week, pattern, buy_price)
-        all_matches[pattern_type] = matches
-    return all_matches
-    
-    
-def find_matches(week, pattern, base_price):
-    def matches_price(week, price):
-        for i, value in week.items():
-            if value is None: pass
-            if value < price[i][0] or value > price[i][1]:
-                return False
-        return True
-
-    return [ p for p in pattern(base_price) if matches_price(week, p) ] 
+def predict(buy_price, sell_prices):
+    predictions = []
+    for pattern_name, pattern in patterns.ALL_PATTERNS.items():
+        p = Prediction.with_pattern(buy_price, pattern_name.value, pattern).with_sell_prices(sell_prices).consolidate().replace_ranges_with_data(sell_prices)
+        predictions.append(p)
+    return predictions
