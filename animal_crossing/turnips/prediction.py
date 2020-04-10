@@ -7,6 +7,8 @@ class Prediction:
         self.pattern_name = pattern_name
         self.weeks = weeks if weeks is not None else []
 
+    def __bool__(self):
+        return len(self.weeks) > 0
 
     def __str__(self):
         if len(self.weeks) < 1:
@@ -47,7 +49,6 @@ class Prediction:
         self.weeks.add(week)
 
     def consolidate(self):
-        print("in consolidate")
         if len(self.weeks) == 0:
             return Prediction(self.base_price, self.pattern_name, [])
 
